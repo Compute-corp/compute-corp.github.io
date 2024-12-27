@@ -1128,11 +1128,11 @@
       scrollBar: false,
       hybrid: false,
       licenseKey: '',
-      credits: {
-        "enabled": true,
-        "label": 'Made with fullPage.js',
-        "position": 'right'
-      },
+      // credits: {
+      //   "enabled": false,
+      //   "label": 'Made in Silicon Valley',
+      //   "position": 'right'
+      // },
       //scrolling
       css3: true,
       scrollingSpeed: 700,

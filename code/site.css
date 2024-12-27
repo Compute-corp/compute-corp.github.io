@@ -276,12 +276,12 @@ p{
 h1{
 	font-size: 5em;
 	font-family: arial,helvetica;
-	color: #fff;
+	color: #c6ecdf;
 	margin:0;
 }
 .section p,
 .intro p{
-	color: #fff;
+	color: #ff0000;
 }
 
 /* Centered texts in each section
@@ -300,17 +300,17 @@ h1{
 /* Sections backgrounds
 * --------------------------------------- */
 #section0{
-	background-image: linear-gradient(128deg,#40afff,#3f61ff);
+	background-image: #10b981;
 }
 
 #section1{
-	background-image: linear-gradient(128deg,#ff9a3f,#ff4b40);
+	background-image: #1b1b1b;
 }
 
 #section2{
-	background-image: linear-gradient(128deg,#fc40ff,#543fff);
+	background-image: #10b981;
 }
 
 #section3{
-	background-image: linear-gradient(128deg,#40fff2,#3fbcff);
+	background-image: #1b1b1b;
 }
