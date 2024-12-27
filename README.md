@@ -1,2 +1,2 @@
 # compute-corp.github.io
-Compute Corp website
+The Compute Corporation website
