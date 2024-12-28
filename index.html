@@ -1,38 +1,404 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-
+<html lang="en">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Compute Coin</title>
-	<meta name="author" content="Compute Corp" />
-	<meta name="description" content="Information website." />
-	<meta name="keywords"  content="compute coin, ai, distributed, network" />
-	<meta name="Resource-type" content="Document" />
+  <meta charset="UTF-8" />
+  <!-- Ensures proper rendering on mobile devices -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>ComputeCoin - Three.js Landscape Background</title>
 
-	<link rel="stylesheet" type="text/css" href="./code/fullpage.css" />
-	<link rel="stylesheet" type="text/css" href="./code/site.css" />
+  <!-- Google Font: Red Hat Display (400 & 900) -->
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;900&display=swap"
+  />
+
+  <!-- FullPage.js CSS (replace with your local or CDN link) -->
+  <link 
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/fullpage.js@4.0.12/dist/fullpage.min.css"
+  />
+
+  <!-- Three.js (CDN link) -->
+  <script 
+    src="https://cdn.jsdelivr.net/npm/three@0.146.0/build/three.min.js"
+    defer
+  ></script>
+
+  <style>
+    /* Basic reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Red Hat Display', sans-serif;
+      background: #121212; /* Off-black */
+      color: #a9e5cc;      /* Light emerald */
+    }
+
+    /* Hide the fullPage.js bullet navigation */
+    .fp-nav {
+      display: none !important; /* This hides the menu entirely */
+    }
+
+    /* FullPage Sections */
+    .section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 60px 200px;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative; /* needed for background canvas positioning */
+    }
+
+    /* Headings & Paragraphs */
+    h1, h2, h3 {
+      font-weight: 900;
+      color: #10b981;
+      margin-bottom: 30px;
+    }
+    h1 {
+      font-size: 3rem;
+    }
+    h2 {
+      font-size: 2rem;
+    }
+    h3 {
+      font-size: 1.5rem;
+    }
+    p {
+      font-size: 1.25rem;
+      line-height: 1.6;
+      font-weight: 400;
+      margin-bottom: 30px;
+    }
+
+    /* CTA Button */
+    a.cta-button {
+      display: inline-block;
+      padding: 15px 30px;
+      background: #06624a; 
+      color: #a9e5cc;     
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 10px;
+      transition: background 0.3s;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+    a.cta-button:hover {
+      background: #044535; 
+      color: #a9e5cc;      
+    }
+
+    /* THREE.JS BACKGROUND FOR SECTION #section1 */
+    #threejs-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1; /* behind text */
+      overflow: hidden;
+    }
+
+    /* Logo styling (optional) */
+    .logo {
+      width: 200px; /* Increased from 120px to 200px */
+      margin-bottom: 20px;
+    }
+
+    /* --- Responsive Font Sizing --- */
+    @media (max-width: 768px) {
+      .section {
+        padding: 40px; /* Less padding on mobile */
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      h2 {
+        font-size: 1.75rem;
+      }
+      h3 {
+        font-size: 1.25rem;
+      }
+      p {
+        font-size: 1.1rem;
+      }
+      a.cta-button {
+        font-size: 1rem;
+        padding: 12px 20px;
+      }
+    }
+  </style>
 </head>
 <body>
 
+<!-- FullPage Wrapper -->
 <div id="fullpage">
-	<div class="section active" id="section0"><h1>Compute Coin</h1></div>
-	<div class="section" id="section1">
-	    <div class="slide "><h1>Global Computing Network</h1></div>
-	    <div class="slide active"><h1>Instant Access</h1></div>
-	    <div class="slide"><h1>Leveraging Ai</h1></div>
-	    <div class="slide"><h1>Anonymous</h1></div>
-	</div>
-	<div class="section" id="section2"><h1>Start generating now</h1></div>
-	<div class="section" id="section3"><h1>More information</h1></div>
+  <!-- SECTION 0 -->
+  <div class="section" id="section0">
+    <!-- Logo -->
+    <img
+      src="media/cc_logo_01.png"
+      alt="ComputeCoin"
+      class="logo"
+    />
+    <br>
+    <br>
+    <br>
+    <h1>ComputeCoin (CCOIN)</h1>
+    <p><strong>Decentralized Platform for Scalable, Affordable Computing</strong></p>
+    <p>
+      <strong>Abstract:</strong> ComputeCoin is a decentralized platform that bridges providers
+      with idle CPU/GPU resources and consumers requiring scalable, cost-effective computing.
+      Using blockchain technology, it ensures secure, transparent transactions with a native
+      token (CCOIN) that incentivizes global resource sharing.
+    </p>
+    <p><a class="cta-button" href="#section1">Learn More</a></p>
+  </div>
+
+  <!-- SECTION 1 (With 3D Landscape Background) -->
+  <div class="section" id="section1" style="height:100%;">
+    <!-- The Three.js canvas behind everything -->
+    <div id="threejs-bg"></div>
+
+    <h2>Introduction</h2>
+    <h3>Problem Statement</h3>
+    <p>
+      Demand for computational power is surging due to AI, ML, and high-definition rendering.
+      Traditional centralized services are expensive and often inaccessible. Meanwhile, countless
+      CPU/GPU resources remain unused globally.
+    </p>
+    <h3>Our Solution</h3>
+    <p>
+      ComputeCoin democratizes access to computing power by connecting providers who lease out
+      their idle hardware with consumers who need scalable, affordable resources. 
+      Blockchain ensures transparency, security, and trust, while CCOIN incentivizes participants.
+    </p>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="section" id="section2">
+    <h2>Platform Overview</h2>
+    <h3>How It Works</h3>
+    <p><strong>For Providers:</strong></p>
+    <p>Register hardware (CPU/GPU) on the platform.</p>
+    <p>Set availability and pricing in CCOIN.</p>
+    <p>Earn tokens as tasks are completed.</p>
+
+    <p><strong>For Consumers:</strong></p>
+    <p>Post tasks specifying requirements and deadlines.</p>
+    <p>Matched with providers via smart contracts.</p>
+    <p>Pay in CCOIN upon successful completion.</p>
+
+    <h3>Key Features</h3>
+    <p><strong>Decentralized Network:</strong> Removes reliance on centralized intermediaries.</p>
+    <p><strong>Smart Contracts:</strong> Automate task allocation and payment.</p>
+    <p><strong>APIs for Integration:</strong> Easy to adopt within existing apps.</p>
+    <p><strong>User-Friendly Interface:</strong> Quick onboarding for providers and consumers.</p>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="section" id="section3">
+    <h2>Token Economy</h2>
+    <h3>CCOIN Utility</h3>
+    <p><strong>Transactions:</strong> Primary currency for task execution and payments.</p>
+    <p><strong>Incentives:</strong> Rewards providers for CPU/GPU contributions.</p>
+    <p><strong>Premium Features:</strong> Access to faster or specialized computing resources.</p>
+
+    <h3>Stabilization Strategies</h3>
+    <p>Dynamic pricing based on usage and liquidity.</p>
+    <p>Partnerships with stablecoin platforms to reduce volatility.</p>
+    <p>Reserve fund to support market stability during fluctuations.</p>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="section" id="section4">
+    <h2>Technology Stack</h2>
+    <p>
+      Initially built on Ethereum for transparency and proven security. Future plans include
+      migrating to high-performance networks like Solana or Polygon for higher throughput 
+      and lower fees.
+    </p>
+    <h3>Security Measures</h3>
+    <p>Frequent smart contract audits.</p>
+    <p>End-to-end encryption for data and transactions.</p>
+    <p>Robust defense against DDoS and malicious activities.</p>
+  </div>
+
+  <!-- SECTION 5 -->
+  <div class="section" id="section5">
+    <h2>Roadmap</h2>
+    <h3>Phase 1: Prototype (Year 1)</h3>
+    <p>Build core platform & smart contracts.</p>
+    <p>Launch ICO for initial funding and community building.</p>
+
+    <h3>Phase 2: Platform Launch (Year 2)</h3>
+    <p>Release MVP with basic provider & consumer functionality.</p>
+    <p>Onboard early adopters (universities, research labs).</p>
+
+    <h3>Phase 3: Scale & Expand (Year 3)</h3>
+    <p>Migrate to a high-performance blockchain network.</p>
+    <p>Global marketing campaigns & strategic partnerships.</p>
+    <p>Introduce AI-driven task matching and priority services.</p>
+
+    <h3>Phase 4: Ecosystem Growth (Year 4+)</h3>
+    <p>Decentralized governance for community decisions.</p>
+    <p>Integration with edge computing and IoT.</p>
+  </div>
+
+  <!-- SECTION 6 -->
+  <div class="section" id="section6">
+    <h2>Market Analysis</h2>
+    <p>
+      <strong>Target Market:</strong> AI researchers, content creators, enterprises—anyone requiring
+      cost-effective computing. Providers include individuals and organizations with surplus capacity.
+    </p>
+    <p>
+      <strong>Competitive Edge:</strong> Wide CPU/GPU support, user-friendly platform, and broad
+      application coverage set ComputeCoin apart from other blockchain-based computing platforms.
+    </p>
+    <h3>Financial Model</h3>
+    <p><strong>Revenue:</strong> Transaction fees, premium features, advertising.</p>
+    <p><strong>Costs:</strong> Development, security, marketing, and support.</p>
+    <p><strong>Funding:</strong> ICO, partnerships, ongoing investments.</p>
+    <p><strong>Exit Strategy:</strong> Potential acquisition or becoming an industry standard.</p>
+  </div>
+
+  <!-- SECTION 7 -->
+  <div class="section" id="section7">
+    <h2>Conclusion</h2>
+    <p>
+      ComputeCoin aims to revolutionize resource sharing by harnessing idle CPU/GPU power
+      in a secure, decentralized network. With a clear roadmap, robust token model, and focus
+      on sustainability, we’re poised to reshape the future of computing.
+    </p>
+    <p>
+      <a class="cta-button" href="#section0">Join ComputeCoin</a>
+    </p>
+    <br><br>
+    <p>© 2024 ComputeCoin. All rights reserved.</p>
+    <p>Questions? <a href="mailto:info@computecoin.io">Contact Us</a></p>
+  </div>
 </div>
 
+<!-- FullPage.js JS -->
+<script src="https://cdn.jsdelivr.net/npm/fullpage.js@4.0.12/dist/fullpage.min.js"></script>
 
+<script>
+  // Navigation is still true (anchors, active states will still work),
+  // but we hide it via CSS, so .fp-nav { display: none; } in the style above
+  new fullpage('#fullpage', {
+    autoScrolling: true,
+    navigation: true, 
+    navigationPosition: 'right',
+    navigationTooltips: [
+      'Home', 'Introduction', 'Platform', 'Token Economy',
+      'Technology', 'Roadmap', 'Market', 'Conclusion'
+    ],
+    showActiveTooltip: true,
+    anchors: [
+      'home', 'introduction', 'platform', 'token-economy',
+      'technology', 'roadmap', 'market', 'conclusion'
+    ]
+  });
 
-<script type="text/javascript" src="./code/fullpage.js"></script>
-<script type="text/javascript">
-	var myFullpage = new fullpage('#fullpage', {
-		sectionsColor: ['#10b981', '#021b12', '#10b981', '#aaffcc', '#10b981']
-	});
+  // THREE.js: 3D Landscape in #section1
+  let scene, camera, renderer, plane;
+  let clock = new THREE.Clock();
+  let positions, planeGeometry;
+
+  function initThreeJS() {
+    const bgDiv = document.getElementById('threejs-bg');
+
+    // Scene
+    scene = new THREE.Scene();
+
+    // Camera
+    camera = new THREE.PerspectiveCamera(
+      60, 
+      bgDiv.clientWidth / bgDiv.clientHeight, 
+      0.1, 
+      100
+    );
+    camera.position.set(0, 2, 5); // Elevated, looking down
+
+    // Renderer
+    renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(bgDiv.clientWidth, bgDiv.clientHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    bgDiv.appendChild(renderer.domElement);
+
+    // Plane geometry for the landscape
+    planeGeometry = new THREE.PlaneGeometry(10, 10, 100, 100);
+    // Rotate so it's horizontal (like a floor)
+    planeGeometry.rotateX(-Math.PI / 2);
+
+    // Access plane's position attribute for animation
+    positions = planeGeometry.attributes.position.array;
+
+    // Material
+    let planeMaterial = new THREE.MeshStandardMaterial({
+      color: 0x10b981,
+      roughness: 0.8,
+      metalness: 0.2,
+      wireframe: false
+    });
+
+    plane = new THREE.Mesh(planeGeometry, planeMaterial);
+    scene.add(plane);
+
+    // Lights
+    let ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    scene.add(ambientLight);
+    let dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    dirLight.position.set(3, 5, 2);
+    scene.add(dirLight);
+
+    // Resize event
+    window.addEventListener('resize', onWindowResize);
+
+    animate();
+  }
+
+  function onWindowResize() {
+    const bgDiv = document.getElementById('threejs-bg');
+    if (!bgDiv) return;
+    camera.aspect = bgDiv.clientWidth / bgDiv.clientHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(bgDiv.clientWidth, bgDiv.clientHeight);
+  }
+
+  function animate() {
+    requestAnimationFrame(animate);
+
+    // Time-based wave animation
+    let time = clock.getElapsedTime();
+    for (let i = 0; i < positions.length; i += 3) {
+      let x = positions[i];
+      let z = positions[i + 2];
+
+      // Wave function
+      let wave = Math.sin((x + time) * 1.5) + Math.cos((z + time) * 1.5);
+      positions[i + 1] = 0.3 * wave; // Animate Y
+    }
+    planeGeometry.attributes.position.needsUpdate = true;
+    planeGeometry.computeVertexNormals();
+
+    renderer.render(scene, camera);
+  }
+
+  // Initialize Three.js once page is fully loaded
+  window.addEventListener('load', () => {
+    initThreeJS();
+  });
 </script>
 </body>
 </html>
